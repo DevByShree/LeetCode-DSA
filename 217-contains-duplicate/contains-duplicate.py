@@ -1,10 +1,13 @@
 class Solution(object):
     def containsDuplicate(self, nums):
-        hash_map = {}
+        seen = set()
 
-        for num in nums:
-            if num in hash_map:
+        for n in nums:
+            if n in seen:
                 return True
+                break
+            seen.add(n)
+        else:
+            return False
+        
 
-            hash_map[num] = True
-        return False
