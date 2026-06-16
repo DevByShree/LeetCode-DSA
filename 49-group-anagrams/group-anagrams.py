@@ -1,13 +1,12 @@
 class Solution(object):
     def groupAnagrams(self, strs):
-        hash_map ={}
+        hashmap = {}
 
         for word in strs:
-            key ="".join(sorted(word))
+            key = "".join(sorted(word))
 
-            if key not in hash_map:
-                hash_map[key] = []
+            if key not in hashmap:
+                hashmap[key] = []
 
-            hash_map[key].append(word)
-
-        return hash_map.values()
+            hashmap[key].append(word)
+        return list(hashmap.values())
