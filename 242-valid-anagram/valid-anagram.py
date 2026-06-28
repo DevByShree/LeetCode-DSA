@@ -1,19 +1,19 @@
 class Solution(object):
     def isAnagram(self, s, t):
-        hash_map={}
-        for char in s:
-            if char in hash_map:
-                hash_map[char] +=1
-            else:
-                hash_map[char] = 1
-        
-        for char in t:
-            if char not in hash_map:
-                return False
-            
-            hash_map[char] -= 1
+        mp = {}
 
-        for  value in hash_map.values():
-            if value!=0:
-                return False
-        return True
+        for key in s:
+            if key not in mp:
+                mp[key]=1
+            else:
+                mp[key]+=1
+        for key in t:
+            if key not in mp:
+                return False 
+            else:
+                mp[key]-=1
+        for value in mp.values():
+            if value !=0:
+                return False 
+        return True 
+        
