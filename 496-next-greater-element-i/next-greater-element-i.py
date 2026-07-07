@@ -1,19 +1,29 @@
 class Solution(object):
     def nextGreaterElement(self, nums1, nums2):
-        store = []
+        stack = []
+        mp = {}
+        res = []
+        for i in range(len(nums2)):
 
-        for i in range(len(nums1)):
-            found = False
-            for j in range(len(nums2)):
-                if nums1[i] == nums2[j]:
-                    for k in range(j+1,len(nums2)):
-                        if nums2[k]>nums1[i]:
-                            store.append(nums2[k])
-                            found = True
-                            break
-                    if found == False:
-                        store.append(-1)
-        return store 
+            while stack and nums2[i] > stack[-1]:
+                mp[stack[-1]] = nums2[i]
+                stack.pop()
+            stack.append(nums2[i])
+        
+        while stack:
+            mp[stack[-1]] = -1
+            stack.pop()
+        
+        for i in nums1:
+            res.append(mp[i])
+        return res
+
+
+
+                    
+
+
+
                     
 
 
